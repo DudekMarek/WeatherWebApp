@@ -24,3 +24,19 @@ def synop():
         result = data
     
     return render_template("synop.html", data=result)
+
+@views.route('/dane-hydrologiczne', methods=['GET', 'POST'])
+def hydro():
+    data = requests.get('http://danepubliczne.imgw.pl/api/data/hydro/').json()
+    result = []
+    if request.method == 'POST':
+        
+        serchedCity = request.form.get('city').lower()
+
+        for city in data:
+            if serchedCity in city['stacja'].lower():
+                result.append(city)
+    else:
+        result = data
+
+    return render_template('hydro.html', data=result)
