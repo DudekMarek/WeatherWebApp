@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %} Dane synoptyczne {% endblock %}
+
+{% block content %}
+<br>
+<div class="text-center">
+    <h1 class="">Dane synoptyczne</h1>
+    <br>
+    <form method="POST">
+        <h3>Wyszukiwarka</h3>
+        <div class="form-grout">
+            <input type="search" class="form-control" id="city" name="city" placeholder="Wpisz nazwę stacji">
+        </div>
+        <button type="submit" class="btn btn-dark">Wyszukaj</button>
+    </form>
+    <br>
+    <div class="container">
+        <table class="table">
+          <thead>
+            <tr>
+                <th>Id stacji</th>
+                <th>Nazwa stacji</th>
+                <th>Aktualna temperatura [&#176;C]</th>
+                <th>Aktualne ciśnienie [hPa]</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in data %}
+              <tr>
+                <td>{{ row['id_stacji'] }}</td>
+                <td>{{ row['stacja'] }}</td>
+                <td>{{ row['temperatura'] }}</td>
+                <td>{{ row['cisnienie'] }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+</div>
+
+
+{% endblock %}
