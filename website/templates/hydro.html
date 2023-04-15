@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Dane hydrologiczne{%endblock%}
+
+{% block content %}
+<br>
+<div class="text-center">
+    <h1 class="">Dane hydrologiczne</h1>
+    <br>
+    <form method="POST">
+        <h3>Wyszukiwarka</h3>
+        <div class="form-grout">
+            <input type="search" class="form-control" id="city" name="city" placeholder="Wpisz nazwę stacji">
+        </div>
+        <button type="submit" class="btn btn-dark">Wyszukaj</button>
+    </form>
+    <br>
+    <div class="container">
+        <table class="table">
+          <thead>
+            <tr>
+                <th>Id stacji</th>
+                <th>Nazwa stacji</th>
+                <th>Rzeka</th>
+                <th>Stan wody</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in data %}
+              <tr>
+                <td>{{ row['id_stacji'] }}</td>
+                <td>{{ row['stacja'] }}</td>
+                <td>{{ row['rzeka'] }}</td>
+                <td>{{ row['stan_wody'] }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+</div>
+
+
+{% endblock %}
